@@ -1,32 +1,32 @@
 ﻿using System;
+
 namespace OOPprinciples
 {
-    public class Car
+    public class Car : Automobile //This is an example of inheritance
     {
-        //this is an example of abstraction
-
-        public int numOfTires;
-        public string Model;
-
-        public void setNumberOfTires(int tires)
+        //This is an example of polymophism
+        public Car(string model)
         {
+            SetModel(model);
+        }
+        public new void setNumberOfTires(int tires)
+        {
+            if (tires > 5)
+            {
+                numOfTires = 4;
+            }
             numOfTires = tires;
         }
-        public int GetNumberOfTires()
+        //this is an example of encapsulation
+        public string honk()
         {
-            return numOfTires;
+            return Reply();
         }
-        public void SetModel(string model)
+        private string Reply()
         {
-            if (String.IsNullOrWhiteSpace(model))
-            {
-                Model = "F-250";
-            }
-            Model = model;
-        }
-        public string GetModel()
-        {
-            return Model;
+            string model = GetModel();
+            int tires = GetNumberOfTires();
+            return "This is a " + model + ". It has " + tires + " tires";
         }
     }
 }
